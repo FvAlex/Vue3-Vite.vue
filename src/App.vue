@@ -1,18 +1,19 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import Message from "./components/Message.vue";
+import RedButton from "./components/RedButton.vue";
+import { useClipboard } from "@vueuse/core"
+import { ref } from "vue";
 
-export default defineComponent({
-  components: {
-    Message
+const myText = ref('')
+const { copy } = useClipboard( { source: myText })
 
-  }
-})
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <Message message="Hello" />
+  <input type="text" v-model="myText">
+  <RedButton @click="copy"> Copié ! </RedButton>
 </template>
 
 <style>

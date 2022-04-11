@@ -1,13 +1,15 @@
-<script setup lang="ts">
-import { computed, onMounted, ref, watch, } from "vue";
+<script lang="ts">
+import { computed, defineComponent, onMounted, ref, watch, } from "vue";
 import { useCounter } from "../composables/useCounter";
-  
-  const props = defineProps({
-    message: {
+
+export default defineComponent({
+  props: {
+    message : {
       type: String,
-      required: true
+      required : true
     }
-  })
+  },
+  setup(props) {
     const { counter, increment } = useCounter();
     const { counter: counter2, increment: increment2 } = useCounter();
       
@@ -22,7 +24,26 @@ import { useCounter } from "../composables/useCounter";
     watch(nomComplet, (newValue) => {
       console.log("Nouvelle valeur : ", newValue)
     })
+
+    return {
+      counter,
+      increment,
+      counter2,
+      increment2,
+      prenom,
+      nom,
+      nomComplet
+    }
+  },
+
+  // methods : {
+  //   increment() {
+  //     this.counter++
+  //   }
+  // }
+})
 </script>
+
 <template>
   <p> {{ message }} </p>
   <div>

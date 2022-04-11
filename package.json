@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^8.2.5",
     "vite-plugin-inspect": "^0.4.3",
     "vue": "^3.2.25"
   },
